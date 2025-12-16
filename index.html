@@ -1,1 +1,41 @@
+<style>
+    /* 讓整個遊戲內容置中 */
+    body { margin: 0; padding: 20px; text-align: center; } 
+</style><!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>九宮格拼圖遊戲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+  <h1>九宮格拼圖遊戲</h1>
 
+    <div class="game-container">
+        <div class="preview-area">
+            <h2>原始圖片 (預覽)</h2>
+            <div id="original-image-container">
+                <img id="bird-image" src="bird.jpg" alt="原始鳥圖片">
+            </div>
+        </div>
+
+        <div class="puzzle-area">
+            <div class="controls">
+                <button id="start-button">開始玩！</button>
+            </div>
+
+            <div class="timer">
+                ⏳ 計時：<span id="time-display">00:00</span>
+            </div>
+
+            <div id="puzzle-board" class="puzzle-board">
+                </div>
+            
+            <div id="message-area" class="message-area"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
