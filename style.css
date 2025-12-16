@@ -1,0 +1,75 @@
+.game-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* 遊戲區和預覽區的外觀設定 */
+.preview-area, .puzzle-area {
+    width: 45%;
+    max-width: 450px;
+}
+
+#original-image-container,
+.puzzle-board {
+    width: 300px; /* 圖片總寬度 */
+    height: 300px; /* 圖片總高度 */
+    border: 3px solid #333;
+}
+
+/* 拼圖區設定為 Grid 佈局 */
+.puzzle-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: #ddd; /* 空白區的顏色 */
+}
+
+/* 每一塊拼圖的樣式 */
+.tile {
+    width: 100px; /* 300px / 3 */
+    height: 100px; /* 300px / 3 */
+    background-image: url('bird.jpg');
+    background-size: 300px 300px; /* 讓圖片填滿整個 3x3 區域 */
+    border: 1px solid #fff;
+    cursor: pointer;
+    transition: transform 0.2s; /* 增加移動動畫 */
+    box-sizing: border-box; /* 確保 border 不會增加元素大小 */
+}
+
+/* 根據 data-index 設定每一塊拼圖的背景圖片位置 */
+/* 這是製作拼圖的關鍵！利用 background-position 裁剪圖片。 */
+/* 例如：
+   第 1 塊 (左上角, index=1): background-position: 0 0;
+   第 2 塊: background-position: -100px 0;
+   第 4 塊 (左邊第二行, index=4): background-position: 0 -100px;
+*/
+.tile:nth-child(1) { background-position: 0 0; }
+.tile:nth-child(2) { background-position: -100px 0; }
+.tile:nth-child(3) { background-position: -200px 0; }
+.tile:nth-child(4) { background-position: 0 -100px; }
+.tile:nth-child(5) { background-position: -100px -100px; }
+.tile:nth-child(6) { background-position: -200px -100px; }
+.tile:nth-child(7) { background-position: 0 -200px; }
+.tile:nth-child(8) { background-position: -100px -200px; }
+.tile:nth-child(9) { background-position: -200px -200px; }
+
+/* 隱藏第 9 塊 (右下角) */
+.hidden-tile {
+    opacity: 0;
+    pointer-events: none; /* 隱藏後不能被點擊 */
+}
+
+/* 遊戲開始前的狀態：隱藏拼圖板 */
+.puzzle-board {
+    display: none;
+}
+.puzzle-area .controls {
+    text-align: center;
+}
+.timer {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
