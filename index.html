@@ -1,38 +1,41 @@
-<style>
-    /* 讓整個遊戲內容置中 */
-    body { margin: 0; padding: 20px; text-align: center; } 
-</style><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>九宮格拼圖遊戲</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小鳥九宮格拼圖</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
-  <h1>九宮格拼圖遊戲</h1>
+
+    <h1>🐦 小鳥九宮格拼圖</h1>
 
     <div class="game-container">
         <div class="preview-area">
-            <h2>原始圖片 (預覽)</h2>
-            <div id="original-image-container">
-                <img id="bird-image" src="bird.jpg" alt="原始鳥圖片">
-            </div>
+            <h3>原始圖片</h3>
+            <img id="bird-image" src="bird.jpg" alt="Bird Preview">
+            <div class="timer">⏳ 時間：<span id="time-display">00:00</span></div>
+            <button id="start-button">開始遊戲</button>
         </div>
 
         <div class="puzzle-area">
-            <div class="controls">
-                <button id="start-button">開始玩！</button>
-            </div>
+            <div id="puzzle-board" class="puzzle-board"></div>
+            <div id="message-area" class="message"></div>
 
-            <div class="timer">
-                ⏳ 計時：<span id="time-display">00:00</span>
+            <div class="leaderboard">
+                <h3>🏆 前 10 名排行榜</h3>
+                <ul id="score-list"></ul>
+                <button id="clear-scores">清除紀錄</button>
             </div>
+        </div>
+    </div>
 
-            <div id="puzzle-board" class="puzzle-board">
-                </div>
-            
-            <div id="message-area" class="message-area"></div>
+    <div id="name-modal" class="modal">
+        <div class="modal-content">
+            <h3>🎉 恭喜過關！</h3>
+            <p>請輸入您的暱稱以登入排行榜：</p>
+            <input type="text" id="player-name" maxlength="10" placeholder="你的名字">
+            <button id="submit-score">送出紀錄</button>
         </div>
     </div>
 
